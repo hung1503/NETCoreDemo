@@ -1,0 +1,8 @@
+POST http://localhost:5236/courses 
+Content-Type: application/json
+
+{
+    "name": "FS-13",
+    "status": "Ongoing",
+    "startDate": "2022-11-01"
+}
