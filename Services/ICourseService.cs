@@ -3,12 +3,9 @@ using NETCore.DTOs;
 
 namespace NETCore.Services;
 
-public interface ICourseService
+public interface ICourseService : ICrudService<Course, CourseDTO>
 {
-    // CRUD Operations
-    Course? Create(CourseDTO request);
-    Course? Get(int id);
-    Course? Update(int id, CourseDTO request);
-    bool Delete(int id);
-    ICollection<Course> GetAll();
+    ICollection<Course> GetOngoingCourses();
+    ICollection<Course> GetEndedCourses();
+    ICollection<Course> GetCoursesByStatus(Course.CourseStatus status);
 }

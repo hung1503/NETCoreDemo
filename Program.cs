@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using NETCore.DTOs;
+using NETCore.Models;
 using NETCore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,10 +21,14 @@ builder.Services.AddScoped<IEmailSenderService, FakeEmailSenderService>();
 builder.Services.AddSingleton<IChatGPTService, FakeChatGPTService>();
 
 builder.Services.AddSingleton<ICounterService, RequestCounterService>();
-
+//
 builder.Services.AddTransient<IDemoService, DemoService>();
-
 builder.Services.AddSingleton<ICourseService, FakeCourseService>();
+//builder.Services.AddSingleton<ICrudService<Student, StudentDTO>, FakeStudentService>();
+builder.Services.AddSingleton<ICrudService<Student, StudentDTO>, FakeCrudService<Student, StudentDTO>>();
+//Tell DI about the setting setion
+builder.Services.Configure<CourseSetting>(builder.Configuration.GetSection("Course:Batch"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

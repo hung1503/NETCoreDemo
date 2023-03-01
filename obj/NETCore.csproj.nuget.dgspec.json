@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\NETCore.csproj": {}
+    "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\NETCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\NETCore.csproj": {
+    "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\NETCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\NETCore.csproj",
+        "projectUniqueName": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\NETCore.csproj",
         "projectName": "NETCore",
-        "projectPath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\NETCore.csproj",
+        "projectPath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\NETCore.csproj",
         "packagesPath": "C:\\Users\\hungn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\obj\\",
+        "outputPath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hungn\\AppData\\Roaming\\NuGet\\NuGet.Config",

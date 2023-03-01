@@ -4,71 +4,56 @@ using NETCore.Services;
 using NETCore.DTOs;
 using NETCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
-public class CourseController : ApiControllerBase
+public class CourseController : CrudController<Course, CourseDTO>
 {
-    private readonly ILogger<CourseController> _logger;
     private readonly ICourseService _service;
+    private readonly ILogger<CourseController> _logger;
+    private readonly IConfiguration _config;
+    private readonly IOptions<CourseSetting> _setting;
 
-    public CourseController(ILogger<CourseController> logger, ICourseService service)
+    public CourseController(ILogger<CourseController> logger, ICourseService service, IConfiguration config, IOptions<CourseSetting> setting) : base(service)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _service = service ?? throw new ArgumentNullException(nameof(service));
+        _config = config;
+        _setting = setting; 
+        _service = service;
     }
 
-    [HttpPost]
-    public IActionResult Create(CourseDTO request)
-    {
-        return Ok(_service.Create(request));
-    }
-    /*
-    public ActionResult<Course?> Create(CourseDTO request)
-    {
-        return _service.Create(request);
-    }
+    // [HttpPost]
+    // public override IActionResult Create(CourseDTO request)
+    // {
+    //     if(request.Size < _setting.Value.MinSize || request.Size > _setting.Value.MaxSize)
+    //     {
+    //         return BadRequest( new {Message = "Course size is not valid"});
+    //     } 
+    //     var course = _service.Create(request);
+    //     if(course is null)
+    //     {
+    //         return BadRequest("Course not created");
+    //     }
+    //     return Ok(_service.Create(request));
+    // }
 
-    public Course? Create(CourseDTO request)
-    {
-        return _service.Create(request);
-    }
-    */
-    [HttpGet("{id:int}")]
-    public ActionResult<Course?> Get(int id)
-    {
-        var course = _service.Get(id);
-        if(course is null)
-        {
-            return NotFound("Course not found");
-        }
-        return course;
-    }
+//     [HttpGet("ongoing")]
+//    public ICollection<Course> GetOngoingCourse()
+//    {
+//         var courses = _service.GetCoursesByStatus(Course.CourseStatus.OnGoing);
+//         return courses;
+//    }
 
-    [HttpPut("{id:int}")]
-    public ActionResult<Course?> Update(int id, CourseDTO request)
-    {
-        var course = _service.Update(id, request);
-        if(course is null)
-        {
-            return NotFound("Course not found");
-        }
-        return Ok(course);
-    }
+//     [HttpGet("finished")]
+//    public ICollection<Course> GetEndedCourse()
+//    {
+//         var courses = _service.GetCoursesByStatus(Course.CourseStatus.Ended);
+//         return courses;
+//    }
 
-    [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
-    {
-        if(_service.Delete(id))
-        {
-            return Ok(new { Message = "Course not deleted"});
-        }
-        return NotFound("Course not found");
-    }
-
-    [HttpGet]
-    public ICollection<Course> GetAll()
-    {
-        return _service.GetAll();
-    }
-
-
+   [HttpGet]
+    public ICollection<Course> GetCoursesByStatus([FromQuery] Course.CourseStatus status)
+   {
+        var courses = _service.GetCoursesByStatus(status);
+        return courses;
+   }
 }

@@ -18,7 +18,8 @@ public class FakeCourseService : ICourseService
             Id = Interlocked.Increment(ref _courseId), // Atomic operation
             Name = request.Name,
             StartDate = request.StartDate,
-            Status = request.Status
+            Status = request.Status,
+            Size = request.Size
         };
         _courses[course.Id] = course;
         return course;
@@ -47,6 +48,21 @@ public class FakeCourseService : ICourseService
         return _courses.Values;
     }
 
+    public ICollection<Course> GetCoursesByStatus(Course.CourseStatus status)
+    {
+        return _courses.Values.Where(c => c.Status == status).ToList();
+    }
+
+    public ICollection<Course> GetEndedCourses()
+    {
+        return _courses.Values.Where(c => c.Status == Course.CourseStatus.Ended).ToList();
+    }
+
+    public ICollection<Course> GetOngoingCourses()
+    {
+        return _courses.Values.Where(c => c.Status == Course.CourseStatus.OnGoing).ToList();
+    }
+
     public Course? Update(int id, CourseDTO request)
     {
         var course = Get(id);
@@ -57,6 +73,7 @@ public class FakeCourseService : ICourseService
         course.Name = request.Name;
         course.StartDate = request.StartDate;
         course.Status = request.Status;
+        course.Size = request.Size;
         return course;
     }
 }

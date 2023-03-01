@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BsgMcupU/fyokJGtgeL0Du4zS3A7Xk+PYBckp2Mqaph2qa0iwpjAHqKyPKvTQ87CiQnqIIMTLYmactPMZifnHQ==",
+  "dgSpecHash": "PqH1ALIXRR8nIs2YM/LWuCgTBm8xbiywGK4zktZgHTE070W8BE3lcCJ2ghvHg0Du8kI9IZcMTu4g5c/S39SMwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\NETCore\\NETCore.csproj",
+  "projectFilePath": "C:\\Users\\hungn\\react\\integrify_assignment\\backend\\netcore\\NETCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hungn\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.0\\microsoft.aspnetcore.openapi.7.0.0.nupkg.sha512",
     "C:\\Users\\hungn\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
